@@ -12,6 +12,7 @@ const TodoForm = ({ title, description, importance, updateFormValue, isExtended,
       title,
       description,
       importance,
+      dateAdded: new Date(),
       status: 'active'
     })
 

@@ -1,10 +1,11 @@
 import React from 'react'
+import { getFormattedDate } from '../utils'
 
-const TodoItem = ({ todo: { id, title, description, importance, status }, completeItem, deleteItem }) => {
-  console.log(importance)
+const TodoItem = ({ todo: { id, title, description, importance, dateAdded, status }, completeItem, deleteItem }) => {
   return (
     <li>
       <h2>{title}</h2>
+      <div>Added: {getFormattedDate(dateAdded)}</div>
       {description && <h4>{description}</h4>}
       {importance && <div>{importance}</div>}
       <strong>{status}</strong>
