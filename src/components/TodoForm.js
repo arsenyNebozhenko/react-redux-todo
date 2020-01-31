@@ -36,7 +36,7 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
       <button 
         type="button"
         onClick={toggleExtendForm}
-      >Extend</button>
+      >{isExtended ? 'Shrink' : 'Extend'}</button>
     </form>
   )
 }
