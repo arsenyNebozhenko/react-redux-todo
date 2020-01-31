@@ -4,6 +4,8 @@ const initialState = {
   title: '',
   description: '',
   importance: '',
+  dateAdded: '',
+  dateExpires: '',
   isExtended: false
 }
 

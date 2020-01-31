@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { updateFormValue, addItem, toggleExtendForm } from '../actions'
 
-const TodoForm = ({ title, description, importance, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
+const TodoForm = ({ title, description, importance, dateExpires, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -13,12 +13,14 @@ const TodoForm = ({ title, description, importance, updateFormValue, isExtended,
       description,
       importance,
       dateAdded: new Date(),
+      dateExpires: new Date(Date.parse(dateExpires)),
       status: 'active'
     })
 
     updateFormValue('title', '')
     updateFormValue('description', '')
     updateFormValue('importance', '')
+    updateFormValue('dateExpires', '')
   }
 
   const titleInput = (
@@ -54,11 +56,21 @@ const TodoForm = ({ title, description, importance, updateFormValue, isExtended,
     </select>
   )
 
+  const dateExpiresInput = (
+    <input 
+      type="datetime-local"
+      name="dateExpires"
+      value={dateExpires}
+      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
+    />
+  )
+
   return (
     <form onSubmit={handleSubmit}>
       {titleInput}
       {isExtended && descriptionInput}
       {isExtended && selectInput}
+      {isExtended && dateExpiresInput}
       <button>Add</button>
       <button 
         type="button"
@@ -68,10 +80,11 @@ const TodoForm = ({ title, description, importance, updateFormValue, isExtended,
   )
 }
 
-const mapStateToProps = ({ todoForm: { title, description, importance, isExtended } }) => ({
+const mapStateToProps = ({ todoForm: { title, description, importance, dateExpires, isExtended } }) => ({
   title,
   description,
   importance,
+  dateExpires,
   isExtended
 })
 
