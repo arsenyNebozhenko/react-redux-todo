@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 import TodoItem from './TodoItem'
 
 const TodoList = ({ todos }) => {
+  const items = todos.map((todo, index) => <TodoItem key={index} todo={todo} />)
+
   return (
     <ul>
-      <TodoItem />
+      {items}
     </ul>
   )
 }
