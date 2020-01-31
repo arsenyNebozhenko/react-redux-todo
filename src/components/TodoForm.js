@@ -18,6 +18,15 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
     updateDescription('')
   }
 
+  const descriptionInput = (
+    <input 
+      type="text" 
+      placeholder="Description"
+      value={description} 
+      onChange={(e) => updateDescription(e.target.value)} 
+    />
+  )
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -26,15 +35,7 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
         value={title}
         onChange={(e) => updateTitle(e.target.value)}
       />
-      {
-        isExtended && 
-        <input 
-          type="text" 
-          placeholder="Description"
-          value={description} 
-          onChange={(e) => updateDescription(e.target.value)} 
-        />
-      }
+      {isExtended && descriptionInput}
       <button>Add</button>
       <button 
         type="button"
