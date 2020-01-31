@@ -12,6 +12,8 @@ const TodoForm = ({ title, updateState, addItem }) => {
       title,
       status: 'active'
     })
+
+    updateState('')
   }
 
   return (
