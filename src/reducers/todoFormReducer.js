@@ -1,28 +1,18 @@
-import { UPDATE_TITLE, TOGGLE_EXTEND_FORM, UPDATE_DESCRIPTION, UPDATE_IMPORTANCE } from "../actions/types"
+import { UPDATE_FORM_VALUE, TOGGLE_EXTEND_FORM } from "../actions/types"
 
 const initialState = {
   title: '',
   description: '',
-  imporance: null,
+  importance: '',
   isExtended: false
 }
 
 const todoFormReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_TITLE:
+    case UPDATE_FORM_VALUE:
       return {
         ...state,
-        title: action.payload.title
-      }
-    case UPDATE_DESCRIPTION:
-      return {
-        ...state,
-        description: action.payload.description
-      }
-    case UPDATE_IMPORTANCE:
-      return {
-        ...state,
-        importance: action.payload.importance
+        [action.payload.name]: action.payload.value
       }
     case TOGGLE_EXTEND_FORM:
       return {

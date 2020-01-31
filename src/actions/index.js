@@ -1,23 +1,10 @@
-import { UPDATE_TITLE, ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, TOGGLE_EXTEND_FORM, UPDATE_DESCRIPTION, UPDATE_IMPORTANCE } from "./types";
+import { UPDATE_FORM_VALUE, ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, TOGGLE_EXTEND_FORM } from "./types";
 
-export const updateTitle = (title) => ({
-  type: UPDATE_TITLE,
+export const updateFormValue = (name, value) => ({
+  type: UPDATE_FORM_VALUE,
   payload: {
-    title
-  }
-})
-
-export const updateDescription = (description) => ({
-  type: UPDATE_DESCRIPTION,
-  payload: {
-    description
-  }
-})
-
-export const updateImportance = (importance) => ({
-  type: UPDATE_IMPORTANCE,
-  payload: {
-    importance
+    name,
+    value
   }
 })
 

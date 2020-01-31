@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateTitle, addItem, toggleExtendForm, updateDescription, updateImportance } from '../actions'
+import { updateFormValue, addItem, toggleExtendForm } from '../actions'
 
-const TodoForm = ({ title, description, importance, isExtended, toggleExtendForm, updateTitle, updateDescription, updateImportance, addItem }) => {
+const TodoForm = ({ title, description, importance, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -15,21 +15,37 @@ const TodoForm = ({ title, description, importance, isExtended, toggleExtendForm
       status: 'active'
     })
 
-    updateTitle('')
-    updateDescription('')
+    updateFormValue('title', '')
+    updateFormValue('description', '')
+    updateFormValue('importance', '')
   }
+
+  const titleInput = (
+    <input
+      type="text"
+      name="title"
+      placeholder="Title"
+      value={title}
+      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
+    />
+  )
 
   const descriptionInput = (
     <input 
       type="text" 
+      name="description"
       placeholder="Description"
       value={description} 
-      onChange={(e) => updateDescription(e.target.value)} 
+      onChange={(e) => updateFormValue(e.target.name, e.target.value)} 
     />
   )
 
   const selectInput = (
-    <select value={importance} onChange={(e) => updateImportance(e.target.value)}>
+    <select 
+      name="importance"
+      value={importance} 
+      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
+    >
       <option value=""></option>
       <option value="important">important</option>
       <option value="less important">less important</option>
@@ -39,12 +55,7 @@ const TodoForm = ({ title, description, importance, isExtended, toggleExtendForm
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => updateTitle(e.target.value)}
-      />
+      {titleInput}
       {isExtended && descriptionInput}
       {isExtended && selectInput}
       <button>Add</button>
@@ -64,9 +75,7 @@ const mapStateToProps = ({ todoForm: { title, description, importance, isExtende
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateTitle: (value) => dispatch(updateTitle(value)),
-  updateDescription: (value) => dispatch(updateDescription(value)),
-  updateImportance: (value) => dispatch(updateImportance(value)),
+  updateFormValue: (name, value) => dispatch(updateFormValue(name, value)),
   toggleExtendForm: () => dispatch(toggleExtendForm()),
   addItem: (id, title, status) => dispatch(addItem(id, title, status))
 })
