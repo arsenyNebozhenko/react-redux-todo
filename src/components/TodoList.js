@@ -1,10 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { deleteItem } from '../actions'
 
 import TodoItem from './TodoItem'
 
-const TodoList = ({ todos }) => {
-  const items = todos.map((todo, index) => <TodoItem key={index} todo={todo} />)
+const TodoList = ({ todos, deleteItem }) => {
+  const items = todos.map((todo, index) => (
+    <TodoItem 
+      key={index} 
+      todo={todo}
+      deleteItem={deleteItem} 
+    />
+  ))
 
   return (
     <ul>
@@ -17,4 +24,8 @@ const mapStateToProps = ({ todos }) => ({
   todos
 })
 
-export default connect(mapStateToProps)(TodoList)
+const mapDispatchToProps = (dispatch) => ({
+  deleteItem: (id) => dispatch(deleteItem(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

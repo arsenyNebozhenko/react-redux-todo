@@ -1,4 +1,4 @@
-import { ADD_ITEM } from '../actions/types'
+import { ADD_ITEM, DELETE_ITEM } from '../actions/types'
 
 const initialState = [
   {
@@ -25,6 +25,8 @@ const todosReducer = (state = initialState, action) => {
         ...state,
         action.payload.todo
       ]
+    case DELETE_ITEM:
+      return state.filter(item => item.id !== action.payload.id)
     default:
       return state
   }

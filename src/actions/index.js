@@ -1,4 +1,4 @@
-import { UPDATE_STATE, ADD_ITEM } from "./types";
+import { UPDATE_STATE, ADD_ITEM, DELETE_ITEM } from "./types";
 
 export const updateState = (title) => ({
   type: UPDATE_STATE,
@@ -11,5 +11,12 @@ export const addItem = (todo) => ({
   type: ADD_ITEM,
   payload: {
     todo
+  }
+})
+
+export const deleteItem = (id) => ({
+  type: DELETE_ITEM,
+  payload: {
+    id
   }
 })
