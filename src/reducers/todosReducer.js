@@ -1,3 +1,5 @@
+import { ADD_ITEM } from '../actions/types'
+
 const initialState = [
   {
     id: 1,
@@ -18,6 +20,8 @@ const initialState = [
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_ITEM:
+      return state
     default:
       return state
   }
