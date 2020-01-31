@@ -21,7 +21,10 @@ const initialState = [
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
-      return state
+      return [
+        ...state,
+        action.payload.todo
+      ]
     default:
       return state
   }

@@ -1,12 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateState } from '../actions'
+import { updateState, addItem } from '../actions'
 
-const TodoForm = ({ title, updateState }) => {
+const TodoForm = ({ title, updateState, addItem }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    addItem({
+      id: Math.random(),
+      title,
+      status: 'active'
+    })
+  }
+
   return (
-    <form>
-      <input 
+    <form onSubmit={handleSubmit}>
+      <input
         type="text"
         value={title}
         onChange={(e) => updateState(e.target.value)}
@@ -21,7 +31,8 @@ const mapStateToProps = ({ todoForm: { title } }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateState: (value) => dispatch(updateState(value))
+  updateState: (value) => dispatch(updateState(value)),
+  addItem: (id, title, status) => dispatch(addItem(id, title, status))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm)

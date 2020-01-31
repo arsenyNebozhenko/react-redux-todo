@@ -7,11 +7,9 @@ export const updateState = (title) => ({
   }
 })
 
-export const addItem = (id, title, status) => ({
+export const addItem = (todo) => ({
   type: ADD_ITEM,
   payload: {
-    id,
-    title,
-    status
+    todo
   }
 })
