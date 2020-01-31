@@ -6,7 +6,7 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
     <li>
       <h2>{title}</h2>
       <div>Added: {getFormattedDate(dateAdded)}</div>
-      {dateExpires && <div>Expires: {getFormattedDate(dateExpires)}</div>}
+      {'' + dateExpires !== 'Invalid Date' && <div>Expires: {getFormattedDate(dateExpires)}</div>}
       {description && <h4>{description}</h4>}
       {importance && <div>{importance}</div>}
       <strong>{status}</strong>
