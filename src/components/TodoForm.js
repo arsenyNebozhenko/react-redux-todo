@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateState, addItem } from '../actions'
+import { updateTitle, addItem } from '../actions'
 
-const TodoForm = ({ title, updateState, addItem }) => {
+const TodoForm = ({ title, updateTitle, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -13,7 +13,7 @@ const TodoForm = ({ title, updateState, addItem }) => {
       status: 'active'
     })
 
-    updateState('')
+    updateTitle('')
   }
 
   return (
@@ -21,7 +21,7 @@ const TodoForm = ({ title, updateState, addItem }) => {
       <input
         type="text"
         value={title}
-        onChange={(e) => updateState(e.target.value)}
+        onChange={(e) => updateTitle(e.target.value)}
       />
       <button>Add</button>
     </form>
@@ -33,7 +33,7 @@ const mapStateToProps = ({ todoForm: { title } }) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateState: (value) => dispatch(updateState(value)),
+  updateTitle: (value) => dispatch(updateTitle(value)),
   addItem: (id, title, status) => dispatch(addItem(id, title, status))
 })
 

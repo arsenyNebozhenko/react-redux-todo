@@ -1,4 +1,4 @@
-import { UPDATE_STATE } from "../actions/types"
+import { UPDATE_TITLE } from "../actions/types"
 
 const initialState = {
   title: ''
@@ -6,7 +6,7 @@ const initialState = {
 
 const todoFormReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_STATE:
+    case UPDATE_TITLE:
       return {
         ...state,
         title: action.payload.title

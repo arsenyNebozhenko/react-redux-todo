@@ -1,7 +1,7 @@
-import { UPDATE_STATE, ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM } from "./types";
+import { UPDATE_TITLE, ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM } from "./types";
 
-export const updateState = (title) => ({
-  type: UPDATE_STATE,
+export const updateTitle = (title) => ({
+  type: UPDATE_TITLE,
   payload: {
     title
   }
