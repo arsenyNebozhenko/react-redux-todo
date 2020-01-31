@@ -22,6 +22,7 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        placeholder="Title"
         value={title}
         onChange={(e) => updateTitle(e.target.value)}
       />
@@ -29,8 +30,10 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
         isExtended && 
         <input 
           type="text" 
+          placeholder="Description"
           value={description} 
-          onChange={(e) => updateDescription(e.target.value)} />
+          onChange={(e) => updateDescription(e.target.value)} 
+        />
       }
       <button>Add</button>
       <button 
