@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateTitle, addItem, toggleExtendForm, updateDescription } from '../actions'
+import { updateTitle, addItem, toggleExtendForm, updateDescription, updateImportance } from '../actions'
 
-const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitle, updateDescription, addItem }) => {
+const TodoForm = ({ title, description, importance, isExtended, toggleExtendForm, updateTitle, updateDescription, updateImportance, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -11,6 +11,7 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
       id: Math.random(),
       title,
       description,
+      importance,
       status: 'active'
     })
 
@@ -27,6 +28,15 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
     />
   )
 
+  const selectInput = (
+    <select value={importance} onChange={(e) => updateImportance(e.target.value)}>
+      <option value=""></option>
+      <option value="important">important</option>
+      <option value="less important">less important</option>
+      <option value="not important">not important</option>
+    </select>
+  )
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -36,6 +46,7 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
         onChange={(e) => updateTitle(e.target.value)}
       />
       {isExtended && descriptionInput}
+      {isExtended && selectInput}
       <button>Add</button>
       <button 
         type="button"
@@ -45,15 +56,17 @@ const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitl
   )
 }
 
-const mapStateToProps = ({ todoForm: { title, description, isExtended } }) => ({
+const mapStateToProps = ({ todoForm: { title, description, importance, isExtended } }) => ({
   title,
   description,
+  importance,
   isExtended
 })
 
 const mapDispatchToProps = (dispatch) => ({
   updateTitle: (value) => dispatch(updateTitle(value)),
   updateDescription: (value) => dispatch(updateDescription(value)),
+  updateImportance: (value) => dispatch(updateImportance(value)),
   toggleExtendForm: () => dispatch(toggleExtendForm()),
   addItem: (id, title, status) => dispatch(addItem(id, title, status))
 })
