@@ -1,7 +1,9 @@
-import { UPDATE_TITLE } from "../actions/types"
+import { UPDATE_TITLE, TOGGLE_EXTEND_FORM, UPDATE_DESCRIPTION } from "../actions/types"
 
 const initialState = {
-  title: ''
+  title: '',
+  description: '',
+  isExtended: false
 }
 
 const todoFormReducer = (state = initialState, action) => {
@@ -10,6 +12,16 @@ const todoFormReducer = (state = initialState, action) => {
       return {
         ...state,
         title: action.payload.title
+      }
+    case UPDATE_DESCRIPTION:
+      return {
+        ...state,
+        description: action.payload.description
+      }
+    case TOGGLE_EXTEND_FORM:
+      return {
+        ...state,
+        isExtended: !state.isExtended 
       }
     default:
       return state

@@ -1,19 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateTitle, addItem } from '../actions'
+import { updateTitle, addItem, toggleExtendForm, updateDescription } from '../actions'
 
-const TodoForm = ({ title, updateTitle, addItem }) => {
+const TodoForm = ({ title, description, isExtended, toggleExtendForm, updateTitle, updateDescription, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
     addItem({
       id: Math.random(),
       title,
+      description,
       status: 'active'
     })
 
     updateTitle('')
+    updateDescription('')
   }
 
   return (
@@ -23,17 +25,32 @@ const TodoForm = ({ title, updateTitle, addItem }) => {
         value={title}
         onChange={(e) => updateTitle(e.target.value)}
       />
+      {
+        isExtended && 
+        <input 
+          type="text" 
+          value={description} 
+          onChange={(e) => updateDescription(e.target.value)} />
+      }
       <button>Add</button>
+      <button 
+        type="button"
+        onClick={toggleExtendForm}
+      >Extend</button>
     </form>
   )
 }
 
-const mapStateToProps = ({ todoForm: { title } }) => ({
-  title
+const mapStateToProps = ({ todoForm: { title, description, isExtended } }) => ({
+  title,
+  description,
+  isExtended
 })
 
 const mapDispatchToProps = (dispatch) => ({
   updateTitle: (value) => dispatch(updateTitle(value)),
+  updateDescription: (value) => dispatch(updateDescription(value)),
+  toggleExtendForm: () => dispatch(toggleExtendForm()),
   addItem: (id, title, status) => dispatch(addItem(id, title, status))
 })
 
