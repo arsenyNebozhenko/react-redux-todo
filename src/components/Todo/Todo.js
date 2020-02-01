@@ -1,13 +1,13 @@
 import React from 'react'
 
-import TodoForm from '../TodoForm/TodoForm'
+import TodoAddForm from '../TodoAddForm/TodoAddForm'
 import TodoList from '../TodoList/TodoList'
 import TodoFilterForm from '../TodoFilterForm/TodoFilterForm'
 
 const Todo = () => {
   return (
     <div>
-      <TodoForm />
+      <TodoAddForm />
       <TodoFilterForm />
       <TodoList />
     </div>

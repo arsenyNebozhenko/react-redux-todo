@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
 import todosReducer from './todosReducer'
-import todoFormReducer from './todoFormReducer'
+import todoAddFormReducer from './todoAddFormReducer'
 import todoFilterFormReducer from './todoFilterFormReducer'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
-  todoForm: todoFormReducer,
+  todoAddForm: todoAddFormReducer,
   todoFilterForm: todoFilterFormReducer
 })
 

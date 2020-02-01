@@ -9,7 +9,7 @@ const initialState = {
   isExtended: false
 }
 
-const todoFormReducer = (state = initialState, action) => {
+const TodoAddFormReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_FORM_VALUE:
       return {
@@ -26,4 +26,4 @@ const todoFormReducer = (state = initialState, action) => {
   }
 }
 
-export default todoFormReducer
+export default TodoAddFormReducer
