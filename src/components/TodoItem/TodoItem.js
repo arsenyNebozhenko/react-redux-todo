@@ -11,7 +11,7 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
       {importance && <div>{importance}</div>}
       <strong>{status}</strong>
       <div>
-        <button onClick={() => changeItemStatus(id, status === 'active' ? 'completed' : 'active')}>&#10004;</button>
+        <button onClick={() => changeItemStatus(id, status === 'active' ? 'completed' : status === 'completed' ? 'active' : 'completed')}>&#10004;</button>
         <button onClick={() => deleteItem(id)}>&times;</button>
       </div>
     </li>
