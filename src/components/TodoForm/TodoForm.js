@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { updateFormValue, toggleExtendForm } from '../../actions/todoFormActions'
-import { addItem } from '../../actions/todosActions'
+import { addItem, hideItemsByValue } from '../../actions/todosActions'
 import { updateFilterFormValue } from '../../actions/todoFilterFormActions'
 import TitleInput from './TitleInput'
 import DescriptionInput from './DescriptionInput'
@@ -29,6 +29,7 @@ const TodoForm = ({ title, description, importance, dateExpires, updateFormValue
     updateFormValue('description', '')
     updateFormValue('dateExpires', '')
     updateFilterFormValue('all')
+    hideItemsByValue('all')
   }
 
   return (
