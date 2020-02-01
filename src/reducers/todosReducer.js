@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, EDIT_ITEM_TITLE, HIDE_ITEMS_BY_VALUE } from '../actions/types'
+import { ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE } from '../actions/types'
 
 const initialState = []
 
@@ -19,7 +19,7 @@ const todosReducer = (state = initialState, action) => {
       return state.map(item => (
         item.id === action.payload.id ? {...item, title: action.payload.title} : item
       ))
-    case HIDE_ITEMS_BY_VALUE:
+    case DISPLAY_ITEMS_BY_IMPORTANCE:
       if (action.payload.value === 'all') {
         return state.map(item => ({...item, isHidden: false}))
       } else {

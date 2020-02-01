@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, EDIT_ITEM_TITLE, HIDE_ITEMS_BY_VALUE, } from './types'
+import { ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, } from './types'
 
 export const addItem = (todo) => dispatch => {
   dispatch({
@@ -37,9 +37,9 @@ export const editItemTitle = (id, title) => dispatch => {
   })
 }
 
-export const hideItemsByValue = (value) => dispatch => {
+export const displayItemsByImportance = (value) => dispatch => {
   dispatch({
-    type: HIDE_ITEMS_BY_VALUE,
+    type: DISPLAY_ITEMS_BY_IMPORTANCE,
     payload: {
       value
     }
