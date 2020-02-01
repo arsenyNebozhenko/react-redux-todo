@@ -48,10 +48,4 @@ const mapStateToProps = ({ todoForm: { title, description, importance, dateExpir
   isExtended
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  updateFormValue: (name, value) => dispatch(updateFormValue(name, value)),
-  toggleExtendForm: () => dispatch(toggleExtendForm()),
-  addItem: (id, title, status) => dispatch(addItem(id, title, status))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoForm)
+export default connect(mapStateToProps, { updateFormValue, toggleExtendForm, addItem })(TodoForm)

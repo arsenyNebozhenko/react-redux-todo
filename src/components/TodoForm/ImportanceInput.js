@@ -9,7 +9,7 @@ const ImportanceInput = ({ importance, updateFormValue }) => {
     >
       <option value=""></option>
       <option value="important">important</option>
-      <option value="less important">less important</option>
+      <option value="regular">regular</option>
       <option value="not important">not important</option>
     </select>
   )

@@ -26,10 +26,4 @@ const mapStateToProps = ({ todos }) => ({
   todos
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteItem: (id) => dispatch(deleteItem(id)),
-  completeItem: (id) => dispatch(completeItem(id)),
-  editItemTitle: (id, title) => dispatch(editItemTitle(id, title))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default connect(mapStateToProps, { deleteItem, completeItem, editItemTitle })(TodoList)
