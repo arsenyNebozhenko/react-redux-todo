@@ -1,13 +1,13 @@
 import React from 'react'
 import { getFormattedDate } from '../../utils'
 
-const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, status }, completeItem, deleteItem }) => {
+const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, status }, completeItem, deleteItem, editItemTitle }) => {
   return (
     <li>
-      <h2>{title}</h2>
+      <input type="text" value={title} onChange={(e) => editItemTitle(id, e.target.value)} />
       <div>Added: {getFormattedDate(dateAdded)}</div>
       {'' + dateExpires !== 'Invalid Date' && <div>Expires: {getFormattedDate(dateExpires)}</div>}
-      {description && <h4>{description}</h4>}
+      {description && <div>{description}</div>}
       {importance && <div>{importance}</div>}
       <strong>{status}</strong>
       <div>
