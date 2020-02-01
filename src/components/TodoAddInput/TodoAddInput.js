@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { capitalize } from '../../utils'
+
 const TodoAddInput = ({ name, value, updateFormValue }) => {
   const handleChange = ({ target: { name, value} }) => {
     updateFormValue(name, value)
@@ -21,7 +23,7 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
       return (   
         <input 
           type={name === 'dateExpires' ? 'datetime-local' : 'text'}
-          placeholder={name}
+          placeholder={capitalize(name)}
           name={name}
           value={value}
           onChange={handleChange}

@@ -8,3 +8,5 @@ export const getFormattedDate = (myDate) => {
 
   return `${date} ${month} ${hours}:${minutes}`
 }
+
+export const capitalize = (str) => str.split(' ').map(word => word.split('').map((char, index) => index === 0 ? char.toUpperCase() : char).join('')).join(' ')
