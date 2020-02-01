@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { deleteItem, changeItemStatus, editItemTitle, detectItemsFailure } from '../../actions/todosActions'
+import { deleteItem, changeItemStatus, editItemTitle, detectItemsFailure, addDateCompleted } from '../../actions/todosActions'
 
 import TodoItem from '../TodoItem/TodoItem'
 
-const TodoList = ({ todos, deleteItem, changeItemStatus, editItemTitle, detectItemsFailure }) => {
+const TodoList = ({ todos, deleteItem, changeItemStatus, editItemTitle, detectItemsFailure, addDateCompleted }) => {
   useEffect(() => {
     detectItemsFailure()
     const interval = setInterval(() => {
@@ -21,6 +21,7 @@ const TodoList = ({ todos, deleteItem, changeItemStatus, editItemTitle, detectIt
       changeItemStatus={changeItemStatus}
       editItemTitle={editItemTitle}
       detectItemsFailure={detectItemsFailure}
+      addDateCompleted={addDateCompleted}
     />
   ))
 
@@ -35,4 +36,4 @@ const mapStateToProps = ({ todos }) => ({
   todos
 })
 
-export default connect(mapStateToProps, { deleteItem, changeItemStatus, editItemTitle, detectItemsFailure })(TodoList)
+export default connect(mapStateToProps, { deleteItem, changeItemStatus, editItemTitle, detectItemsFailure, addDateCompleted })(TodoList)
