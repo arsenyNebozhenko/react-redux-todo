@@ -9,7 +9,7 @@ const TodoList = ({ todos, deleteItem, changeItemStatus, editItemTitle, detectIt
     detectItemsFailure()
     const interval = setInterval(() => {
       detectItemsFailure()
-    }, 3000)
+    }, 5000)
     return () => clearInterval(interval)
   }, [detectItemsFailure])
 
@@ -20,6 +20,7 @@ const TodoList = ({ todos, deleteItem, changeItemStatus, editItemTitle, detectIt
       deleteItem={deleteItem} 
       changeItemStatus={changeItemStatus}
       editItemTitle={editItemTitle}
+      detectItemsFailure={detectItemsFailure}
     />
   ))
 
