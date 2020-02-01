@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 
 import { updateFormValue, toggleExtendForm } from '../../actions/todoFormActions'
 import { addItem } from '../../actions/todosActions'
+import { updateFilterFormValue } from '../../actions/todoFilterFormActions'
 import TitleInput from './TitleInput'
 import DescriptionInput from './DescriptionInput'
 import ImportanceInput from './ImportanceInput'
 import DateExpiresInput from './DateExpiresInput'
 import ToggleExtendButton from './ToggleExtendButton'
 
-const TodoForm = ({ title, description, importance, dateExpires, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
+const TodoForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -27,6 +28,7 @@ const TodoForm = ({ title, description, importance, dateExpires, updateFormValue
     updateFormValue('title', '')
     updateFormValue('description', '')
     updateFormValue('dateExpires', '')
+    updateFilterFormValue('all')
   }
 
   return (
@@ -49,4 +51,4 @@ const mapStateToProps = ({ todoForm: { title, description, importance, dateExpir
   isExtended
 })
 
-export default connect(mapStateToProps, { updateFormValue, toggleExtendForm, addItem })(TodoForm)
+export default connect(mapStateToProps, { updateFormValue, updateFilterFormValue, toggleExtendForm, addItem })(TodoForm)
