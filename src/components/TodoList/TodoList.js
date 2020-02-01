@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { deleteItem, detectItemsFailure, setItemProp } from '../../actions/todosActions'
 
 import TodoItem from '../TodoItem/TodoItem'
+
+import {
+  deleteItem,
+  detectItemsFailure,
+  setItemProp
+} from '../../actions/todosActions'
 
 const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
   useEffect(() => {
@@ -34,4 +39,10 @@ const mapStateToProps = ({ todos }) => ({
   todos
 })
 
-export default connect(mapStateToProps, { deleteItem, detectItemsFailure, setItemProp })(TodoList)
+const actions = {
+  deleteItem,
+  detectItemsFailure,
+  setItemProp
+}
+
+export default connect(mapStateToProps, actions)(TodoList)

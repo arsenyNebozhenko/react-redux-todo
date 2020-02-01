@@ -1,12 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateFormValue, toggleExtendForm } from '../../actions/todoAddFormActions'
-import { addItem, displayItemsByImportance } from '../../actions/todosActions'
-import { updateFilterFormValue } from '../../actions/todoFilterFormActions'
-
 import TodoAddToggleExtendButton from '../TodoAddToggleExtendButton/TodoAddToggleExtendButton'
 import TodoAddInput from '../TodoAddInput/TodoAddInput'
+
+import { 
+  updateFormValue, 
+  toggleExtendForm 
+} from '../../actions/todoAddFormActions'
+import { 
+  addItem, 
+  displayItemsByImportance 
+} from '../../actions/todosActions'
+import { 
+  updateFilterFormValue 
+} from '../../actions/todoFilterFormActions'
+
 
 const TodoAddForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, displayItemsByImportance, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
@@ -51,4 +60,12 @@ const mapStateToProps = ({ todoAddForm: { title, description, importance, dateEx
   isExtended
 })
 
-export default connect(mapStateToProps, { updateFormValue, updateFilterFormValue, displayItemsByImportance, toggleExtendForm, addItem })(TodoAddForm)
+const actions = {
+  updateFormValue,
+  updateFilterFormValue,
+  displayItemsByImportance,
+  toggleExtendForm,
+  addItem
+}
+
+export default connect(mapStateToProps, actions)(TodoAddForm)

@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { displayItemsByImportance } from '../../actions/todosActions'
-import { updateFilterFormValue } from '../../actions/todoFilterFormActions'
+
+import { 
+  displayItemsByImportance 
+} from '../../actions/todosActions'
+import { 
+  updateFilterFormValue 
+} from '../../actions/todoFilterFormActions'
 
 const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance }) => {
   const handleChange = ({ target: { value}}) => {
@@ -26,4 +31,9 @@ const mapStateToProps = ({ todoFilterForm: { value } }) => ({
   value
 })
 
-export default connect(mapStateToProps, { displayItemsByImportance, updateFilterFormValue })(TodoFilterForm)
+const actions = {
+  displayItemsByImportance,
+  updateFilterFormValue
+}
+
+export default connect(mapStateToProps, actions)(TodoFilterForm)

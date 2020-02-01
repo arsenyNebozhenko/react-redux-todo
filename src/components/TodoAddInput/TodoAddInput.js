@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { capitalize } from '../../utils'
+import { 
+  capitalize 
+} from '../../utils'
 
 const TodoAddInput = ({ name, value, updateFormValue }) => {
   const handleChange = ({ target: { name, value} }) => {

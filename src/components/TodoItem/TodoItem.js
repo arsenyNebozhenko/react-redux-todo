@@ -1,5 +1,9 @@
 import React from 'react'
-import { getFormattedDate, isValidDate } from '../../utils'
+
+import { 
+  getFormattedDate, 
+  isValidDate 
+} from '../../utils'
 
 const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
   const style = {
