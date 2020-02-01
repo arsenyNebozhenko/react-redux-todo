@@ -30,12 +30,12 @@ const TodoForm = ({ title, description, importance, dateExpires, updateFormValue
 
   return (
     <form onSubmit={handleSubmit}>
+      <ToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
       <TitleInput title={title} updateFormValue={updateFormValue} />
       {isExtended && <DescriptionInput description={description} updateFormValue={updateFormValue} />}
       {isExtended && <ImportanceInput importance={importance} updateFormValue={updateFormValue} />}
       {isExtended && <DateExpiresInput dateExpires={dateExpires} updateFormValue={updateFormValue} />}
       <button>Add</button>
-      <ToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
     </form>
   )
 }
