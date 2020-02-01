@@ -2,6 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { updateFormValue, addItem, toggleExtendForm } from '../../actions'
+import TitleInput from './TitleInput'
+import DescriptionInput from './DescriptionInput'
+import ImportanceInput from './ImportanceInput'
+import DateExpiresInput from './DateExpiresInput'
+import ToggleExtendButton from './ToggleExtendButton'
 
 const TodoForm = ({ title, description, importance, dateExpires, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
@@ -23,59 +28,14 @@ const TodoForm = ({ title, description, importance, dateExpires, updateFormValue
     updateFormValue('dateExpires', '')
   }
 
-  const titleInput = (
-    <input
-      type="text"
-      name="title"
-      placeholder="Title"
-      value={title}
-      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
-    />
-  )
-
-  const descriptionInput = (
-    <input 
-      type="text" 
-      name="description"
-      placeholder="Description"
-      value={description} 
-      onChange={(e) => updateFormValue(e.target.name, e.target.value)} 
-    />
-  )
-
-  const selectInput = (
-    <select 
-      name="importance"
-      value={importance} 
-      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
-    >
-      <option value=""></option>
-      <option value="important">important</option>
-      <option value="less important">less important</option>
-      <option value="not important">not important</option>
-    </select>
-  )
-
-  const dateExpiresInput = (
-    <input 
-      type="datetime-local"
-      name="dateExpires"
-      value={dateExpires}
-      onChange={(e) => updateFormValue(e.target.name, e.target.value)}
-    />
-  )
-
   return (
     <form onSubmit={handleSubmit}>
-      {titleInput}
-      {isExtended && descriptionInput}
-      {isExtended && selectInput}
-      {isExtended && dateExpiresInput}
+      <TitleInput title={title} updateFormValue={updateFormValue} />
+      {isExtended && <DescriptionInput description={description} updateFormValue={updateFormValue} />}
+      {isExtended && <ImportanceInput importance={importance} updateFormValue={updateFormValue} />}
+      {isExtended && <DateExpiresInput dateExpires={dateExpires} updateFormValue={updateFormValue} />}
       <button>Add</button>
-      <button 
-        type="button"
-        onClick={toggleExtendForm}
-      >{isExtended ? 'Shrink' : 'Extend'}</button>
+      <ToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
     </form>
   )
 }
