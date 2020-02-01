@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, } from './types'
+import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, DETECT_ITEMS_FAILURE, } from './types'
 
 export const addItem = (todo) => dispatch => {
   dispatch({
@@ -44,5 +44,11 @@ export const displayItemsByImportance = (value) => dispatch => {
     payload: {
       value
     }
+  })
+}
+
+export const detectItemsFailure = () => dispatch => {
+  dispatch({
+    type: DETECT_ITEMS_FAILURE
   })
 }

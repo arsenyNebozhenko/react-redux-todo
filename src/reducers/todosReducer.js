@@ -1,4 +1,5 @@
-import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE } from '../actions/types'
+import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, DETECT_ITEMS_FAILURE } from '../actions/types'
+import { isValidDate } from '../utils'
 
 const initialState = []
 
@@ -23,6 +24,9 @@ const todosReducer = (state = initialState, action) => {
       } else {
         return state.map(item => item.importance === action.payload.value ? {...item, isHidden: false} : {...item, isHidden: true})
       }
+    case DETECT_ITEMS_FAILURE:
+      console.log('asdf')
+      return state.map(item => isValidDate(item.dateExpires) && item.dateExpires.getTime() <= item.dateAdded.getTime() ? {...item, status: 'failed'} : item)
     default:
       return state
   }
