@@ -19,12 +19,12 @@ const TodoForm = ({ title, description, importance, dateExpires, updateFormValue
       importance,
       dateAdded: new Date(),
       dateExpires: new Date(Date.parse(dateExpires)),
-      status: 'active'
+      status: 'active',
+      isHidden: false
     })
 
     updateFormValue('title', '')
     updateFormValue('description', '')
-    updateFormValue('importance', '')
     updateFormValue('dateExpires', '')
   }
 

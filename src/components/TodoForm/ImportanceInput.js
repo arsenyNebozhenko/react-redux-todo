@@ -4,10 +4,9 @@ const ImportanceInput = ({ importance, updateFormValue }) => {
   return (
     <select 
       name="importance"
-      value={importance} 
+      value={importance}
       onChange={(e) => updateFormValue(e.target.name, e.target.value)}
     >
-      <option value=""></option>
       <option value="important">important</option>
       <option value="regular">regular</option>
       <option value="not important">not important</option>

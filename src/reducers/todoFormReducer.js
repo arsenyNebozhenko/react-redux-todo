@@ -3,7 +3,7 @@ import { UPDATE_FORM_VALUE, TOGGLE_EXTEND_FORM } from "../actions/types"
 const initialState = {
   title: '',
   description: '',
-  importance: 'regular',
+  importance: 'important',
   dateAdded: '',
   dateExpires: '',
   isExtended: false
