@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ToggleExtendButton = ({ isExtended, toggleExtendForm }) => {
+const TodoAddToggleExtendButton = ({ isExtended, toggleExtendForm }) => {
   return (
     <button 
       type="button"
@@ -9,4 +9,4 @@ const ToggleExtendButton = ({ isExtended, toggleExtendForm }) => {
   )
 }
 
-export default ToggleExtendButton
+export default TodoAddToggleExtendButton
