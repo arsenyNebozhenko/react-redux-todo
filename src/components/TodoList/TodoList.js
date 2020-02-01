@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteItem, completeItem, editItemTitle } from '../../actions/todosActions'
+import { deleteItem, toggleCompleteItem, editItemTitle } from '../../actions/todosActions'
 
 import TodoItem from '../TodoItem/TodoItem'
 
-const TodoList = ({ todos, deleteItem, completeItem, editItemTitle }) => {
+const TodoList = ({ todos, deleteItem, toggleCompleteItem, editItemTitle }) => {
   const items = todos.map((todo, index) => (
     <TodoItem 
       key={index} 
       todo={todo}
       deleteItem={deleteItem} 
-      completeItem={completeItem}
+      toggleCompleteItem={toggleCompleteItem}
       editItemTitle={editItemTitle}
     />
   ))
@@ -26,4 +26,4 @@ const mapStateToProps = ({ todos }) => ({
   todos
 })
 
-export default connect(mapStateToProps, { deleteItem, completeItem, editItemTitle })(TodoList)
+export default connect(mapStateToProps, { deleteItem, toggleCompleteItem, editItemTitle })(TodoList)
