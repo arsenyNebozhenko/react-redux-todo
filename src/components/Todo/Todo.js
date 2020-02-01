@@ -9,8 +9,8 @@ const Todo = () => {
   return (
     <div className="todo">
       <TodoAddForm />
-      <TodoFilterForm />
       <TodoList />
+      <TodoFilterForm />
     </div>
   )
 }
