@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteItem, completeItem } from '../actions'
+import { deleteItem, completeItem } from '../../actions'
 
-import TodoItem from './TodoItem'
+import TodoItem from '../TodoItem/TodoItem'
 
 const TodoList = ({ todos, deleteItem, completeItem }) => {
   const items = todos.map((todo, index) => (

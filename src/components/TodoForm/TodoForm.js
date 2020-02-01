@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateFormValue, addItem, toggleExtendForm } from '../actions'
+import { updateFormValue, addItem, toggleExtendForm } from '../../actions'
 
 const TodoForm = ({ title, description, importance, dateExpires, updateFormValue, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
