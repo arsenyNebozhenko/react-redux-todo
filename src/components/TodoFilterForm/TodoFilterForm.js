@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { hideItemsByValue } from '../../actions'
+import { hideItemsByValue } from '../../actions/todosActions'
 
 const TodoFilterForm = ({ hideItemsByValue }) => {
   return (

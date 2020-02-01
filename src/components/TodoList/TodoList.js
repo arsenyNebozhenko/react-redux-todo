@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteItem, completeItem, editItemTitle } from '../../actions'
+import { deleteItem, completeItem, editItemTitle } from '../../actions/todosActions'
 
 import TodoItem from '../TodoItem/TodoItem'
 

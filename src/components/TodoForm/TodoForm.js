@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateFormValue, addItem, toggleExtendForm } from '../../actions'
+import { updateFormValue, toggleExtendForm } from '../../actions/todoFormActions'
+import { addItem } from '../../actions/todosActions'
 import TitleInput from './TitleInput'
 import DescriptionInput from './DescriptionInput'
 import ImportanceInput from './ImportanceInput'

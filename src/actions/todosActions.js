@@ -1,20 +1,4 @@
-import { UPDATE_FORM_VALUE, ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, TOGGLE_EXTEND_FORM, EDIT_ITEM_TITLE, HIDE_ITEMS_BY_VALUE } from "./types";
-
-export const updateFormValue = (name, value) => dispatch => {
-  dispatch({
-    type: UPDATE_FORM_VALUE,
-    payload: {
-      name,
-      value
-    }
-  })
-}
-
-export const toggleExtendForm = () => dispatch => {
-  dispatch({
-    type: TOGGLE_EXTEND_FORM
-  })
-}
+import { ADD_ITEM, DELETE_ITEM, COMPLETE_ITEM, EDIT_ITEM_TITLE, HIDE_ITEMS_BY_VALUE, } from './types'
 
 export const addItem = (todo) => dispatch => {
   dispatch({
