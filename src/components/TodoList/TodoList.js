@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import './TodoList.scss'
 
 import TodoItem from '../TodoItem/TodoItem'
 
@@ -29,7 +30,7 @@ const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
   ))
 
   return (
-    <ul>
+    <ul className="todo-list">
       {items}
     </ul>
   )
