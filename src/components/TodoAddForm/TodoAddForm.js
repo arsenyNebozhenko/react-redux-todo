@@ -4,10 +4,8 @@ import { connect } from 'react-redux'
 import { updateFormValue, toggleExtendForm } from '../../actions/todoAddFormActions'
 import { addItem, displayItemsByImportance } from '../../actions/todosActions'
 import { updateFilterFormValue } from '../../actions/todoFilterFormActions'
-import ImportanceInput from './ImportanceInput'
-import DateExpiresInput from './DateExpiresInput'
 import ToggleExtendButton from './ToggleExtendButton'
-import TodoAddInputText from '../TodoAddInputText/TodoAddInputText'
+import TodoAddInput from '../TodoAddInput/TodoAddInput'
 
 const TodoAddForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, displayItemsByImportance, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {
@@ -35,10 +33,10 @@ const TodoAddForm = ({ title, description, importance, dateExpires, updateFormVa
   return (
     <form onSubmit={handleSubmit}>
       <ToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
-      <TodoAddInputText name={'title'} value={title} updateFormValue={updateFormValue} />
-      {isExtended && <TodoAddInputText name={'description'} value={description} updateFormValue={updateFormValue} />}
-      {isExtended && <ImportanceInput importance={importance} updateFormValue={updateFormValue} />}
-      {isExtended && <DateExpiresInput dateExpires={dateExpires} updateFormValue={updateFormValue} />}
+      <TodoAddInput name="title" value={title} updateFormValue={updateFormValue} />
+      {isExtended && <TodoAddInput name="description" value={description} updateFormValue={updateFormValue} />}
+      {isExtended && <TodoAddInput name="importance" updateFormValue={updateFormValue} />}
+      {isExtended && <TodoAddInput name="dateExpires" value={dateExpires} updateFormValue={updateFormValue} />}
       <button>Add</button>
     </form>
   )
