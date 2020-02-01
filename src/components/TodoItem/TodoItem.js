@@ -3,7 +3,7 @@ import { getFormattedDate, isValidDate } from '../../utils'
 
 const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, status, isHidden }, changeItemStatus, deleteItem, editItemTitle }) => {
   return (
-    <li style={{display: isHidden ? 'none' : 'block', color: status === 'failed' ? 'red' : 'black'}}>
+    <li style={{display: isHidden ? 'none' : 'block', color: status === 'active' ? 'black' : status === 'completed' ? 'green' : 'red'}}>
       <input type="text" value={title} onChange={(e) => editItemTitle(id, e.target.value)} />
       <div>Added: {getFormattedDate(dateAdded)}</div>
       {isValidDate(dateExpires) && <div>Expires: {getFormattedDate(dateExpires)}</div>}
