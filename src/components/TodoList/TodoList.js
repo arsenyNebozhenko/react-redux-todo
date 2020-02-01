@@ -14,7 +14,7 @@ const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
     detectItemsFailure()
     const interval = setInterval(() => {
       detectItemsFailure()
-    }, 5000)
+    }, 1500)
     return () => clearInterval(interval)
   }, [detectItemsFailure])
 
