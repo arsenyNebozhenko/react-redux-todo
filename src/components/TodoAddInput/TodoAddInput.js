@@ -1,4 +1,5 @@
 import React from 'react'
+import './TodoAddInput.scss'
 
 import { 
   capitalize 
@@ -13,6 +14,7 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
     case 'importance':
       return (
         <select 
+          className="todo-add-input todo-add-input--select"
           name={name}
           onChange={handleChange}
         >
@@ -24,6 +26,7 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
     default:
       return (   
         <input 
+          className={'todo-add-input' + (name === 'dateExpires' ? ' todo-add-input--time' : '')}
           type={name === 'dateExpires' ? 'datetime-local' : 'text'}
           placeholder={capitalize(name)}
           name={name}

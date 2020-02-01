@@ -1,0 +1,24 @@
+.todo-add-toggle-extend-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  margin-right: .16rem;
+  svg {
+    width: 28px;
+    height: 28px;
+    fill: #323639;
+    transition: all .2s ease;
+  }
+  &:hover,
+  &:focus {
+    svg {
+      fill: #5897FE;
+    }
+  }
+}

@@ -1,11 +1,15 @@
 import React from 'react'
+import './TodoAddToggleExtendButton.scss'
 
-const TodoAddToggleExtendButton = ({ isExtended, toggleExtendForm }) => {
+import { ReactComponent as Gear } from '../../assets/gear.svg'
+
+const TodoAddToggleExtendButton = ({ toggleExtendForm }) => {
   return (
     <button 
+      className="todo-add-toggle-extend-button"
       type="button"
       onClick={toggleExtendForm}
-    >{isExtended ? 'Shrink' : 'Extend'}</button>
+    ><Gear /></button>
   )
 }
 

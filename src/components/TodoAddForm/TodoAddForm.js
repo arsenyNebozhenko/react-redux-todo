@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './TodoAddForm.scss'
 
 import TodoAddToggleExtendButton from '../TodoAddToggleExtendButton/TodoAddToggleExtendButton'
 import TodoAddInput from '../TodoAddInput/TodoAddInput'
@@ -41,13 +42,13 @@ const TodoAddForm = ({ title, description, importance, dateExpires, updateFormVa
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todo-add-form" onSubmit={handleSubmit}>
       <TodoAddToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
       <TodoAddInput name="title" value={title} updateFormValue={updateFormValue} />
       {isExtended && <TodoAddInput name="description" value={description} updateFormValue={updateFormValue} />}
       {isExtended && <TodoAddInput name="importance" updateFormValue={updateFormValue} />}
       {isExtended && <TodoAddInput name="dateExpires" value={dateExpires} updateFormValue={updateFormValue} />}
-      <button>Add</button>
+      <button className="todo-add-form__button">+</button>
     </form>
   )
 }

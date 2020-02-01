@@ -1,0 +1,14 @@
+.todo-add-form {
+  display: flex;
+  &__button {
+    font-size: 2rem;
+    line-height: 0;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-color: #5897FE;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+}
