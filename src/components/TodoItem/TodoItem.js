@@ -2,6 +2,11 @@ import React from 'react'
 import { getFormattedDate, isValidDate } from '../../utils'
 
 const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
+  const style = {
+    display: isHidden ? 'none' : 'block',
+    color: status === 'active' ? 'black' : status === 'completed' ? 'green' : 'red'
+  }
+  
   const handleToggleButtonClick = () => {
     if (status === 'completed') {
       setItemProp(id, 'dateCompleted', null)
@@ -12,8 +17,12 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
   }
   
   return (
-    <li style={{display: isHidden ? 'none' : 'block', color: status === 'active' ? 'black' : status === 'completed' ? 'green' : 'red'}}>
-      <input type="text" name="title" value={title} onChange={(e) => setItemProp(id, e.target.name, e.target.value)} />
+    <li style={style}>
+      <input 
+        type="text" 
+        name="title" 
+        value={title} 
+        onChange={({ target: { name, value }}) => setItemProp(name, value)} />
       <div>Added: {getFormattedDate(dateAdded)}</div>
       {isValidDate(dateExpires) && <div>Expires: {getFormattedDate(dateExpires)}</div>}
       {dateCompleted && <div>Completed: {getFormattedDate(dateCompleted)}</div>}
