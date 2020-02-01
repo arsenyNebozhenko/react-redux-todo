@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, TOGGLE_COMPLETE_ITEM, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, } from './types'
+import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, } from './types'
 
 export const addItem = (todo) => dispatch => {
   dispatch({
@@ -18,11 +18,12 @@ export const deleteItem = (id) => dispatch => {
   })
 }
 
-export const toggleCompleteItem = (id) => dispatch => {
+export const changeItemStatus = (id, status) => dispatch => {
   dispatch({
-    type: TOGGLE_COMPLETE_ITEM,
+    type: CHANGE_ITEM_STATUS,
     payload: {
-      id
+      id,
+      status
     }
   })
 }

@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, TOGGLE_COMPLETE_ITEM, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE } from '../actions/types'
+import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE } from '../actions/types'
 
 const initialState = []
 
@@ -11,19 +11,8 @@ const todosReducer = (state = initialState, action) => {
       ]
     case DELETE_ITEM:
       return state.filter(item => item.id !== action.payload.id)
-    case TOGGLE_COMPLETE_ITEM:
-      return state.map(item => {
-        if (item.id === action.payload.id) {
-          if (item.status === 'active') {
-            return {...item, status: 'completed'}
-          } else if (item.status === 'completed') {
-            return {...item, status: 'active'}
-          }
-          return state
-        } else {
-          return state
-        }
-      })
+    case CHANGE_ITEM_STATUS:
+      return state.map(item => item.id === action.payload.id ? {...item, status: action.payload.status} : item)
     case EDIT_ITEM_TITLE:
       return state.map(item => (
         item.id === action.payload.id ? {...item, title: action.payload.title} : item
