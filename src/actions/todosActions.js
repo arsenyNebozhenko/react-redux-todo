@@ -1,4 +1,4 @@
-import { ADD_ITEM, DELETE_ITEM, CHANGE_ITEM_STATUS, EDIT_ITEM_TITLE, DISPLAY_ITEMS_BY_IMPORTANCE, DETECT_ITEMS_FAILURE, ADD_DATE_COMPLETED, } from './types'
+import { ADD_ITEM, DELETE_ITEM, DISPLAY_ITEMS_BY_IMPORTANCE, DETECT_ITEMS_FAILURE, SET_ITEM_PROP } from './types'
 
 export const addItem = (todo) => dispatch => {
   dispatch({
@@ -18,26 +18,6 @@ export const deleteItem = (id) => dispatch => {
   })
 }
 
-export const changeItemStatus = (id, status) => dispatch => {
-  dispatch({
-    type: CHANGE_ITEM_STATUS,
-    payload: {
-      id,
-      status
-    }
-  })
-}
-
-export const editItemTitle = (id, title) => dispatch => {
-  dispatch({
-    type: EDIT_ITEM_TITLE,
-    payload: {
-      id,
-      title
-    }
-  })
-}
-
 export const displayItemsByImportance = (value) => dispatch => {
   dispatch({
     type: DISPLAY_ITEMS_BY_IMPORTANCE,
@@ -53,12 +33,13 @@ export const detectItemsFailure = () => dispatch => {
   })
 }
 
-export const addDateCompleted = (id, dateCompleted) => dispatch => {
+export const setItemProp = (id, key, value) => dispatch => {
   dispatch({
-    type: ADD_DATE_COMPLETED,
+    type: SET_ITEM_PROP,
     payload: {
       id,
-      dateCompleted
+      key,
+      value
     }
   })
 }
