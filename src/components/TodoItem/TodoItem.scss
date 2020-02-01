@@ -1,0 +1,45 @@
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__title {
+    font-size: 1.25rem;
+    flex-grow: 1;
+    margin-right: .5rem;
+  }
+  &__description {
+    margin-right: .5rem;
+  }
+  &__status {
+    font-size: .75rem;
+    margin-right: .5rem;
+  }
+  &__dates {
+    margin-right: .5rem;
+    
+  }
+  &__date {
+    font-size: .75rem;
+  }
+  &__importance {
+    margin-right: .5rem;
+  }
+  &__button {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    &--toggle {
+      background-color: transparent;
+      color: #323639;
+      border-color: #323639;
+      margin-right: 0.5rem;
+    }
+    &--delete {
+      color: #fff;
+      border-color: #eb503c;
+      background-color: #eb503c;
+    }
+  }
+}

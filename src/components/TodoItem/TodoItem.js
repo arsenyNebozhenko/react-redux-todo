@@ -1,4 +1,5 @@
 import React from 'react'
+import './TodoItem.scss'
 
 import { 
   getFormattedDate, 
@@ -22,23 +23,29 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
   
   return (
     <li className="todo-item">
-      <button onClick={handleToggleButtonClick}>&#10004;</button>
+      <button
+        className="todo-item__button todo-item__button--toggle" 
+        onClick={handleToggleButtonClick}
+      >&#10004;</button>
       <input 
-        className="todo-item__input"
+        className="todo-item__title"
         type="text" 
         name="title" 
         value={title} 
         onChange={({ target: { name, value }}) => setItemProp(name, value)} 
       />
-      <strong>{status}</strong>
+      {description && <div className="todo-item__description">{description}</div>}
+      <strong className="todo-item__status">{status}</strong>
       <ul className="todo-item__dates">
         <li className="todo-item__date">Added: {getFormattedDate(dateAdded)}</li>
         {isValidDate(dateExpires) && <li className="todo-item__date">Expires: {getFormattedDate(dateExpires)}</li>}
         {dateCompleted && <li className="todo-item__date">Completed: {getFormattedDate(dateCompleted)}</li>}
       </ul>
-      {description && <div>{description}</div>}
-      {importance && <div>{importance}</div>}
-      <button onClick={() => deleteItem(id)}>&times;</button>
+      {importance && <div className="todo-item__importance">{importance}</div>}
+      <button
+        className="todo-item__button todo-item__button--delete" 
+        onClick={() => deleteItem(id)
+      }>&times;</button>
     </li>
   )
 }
