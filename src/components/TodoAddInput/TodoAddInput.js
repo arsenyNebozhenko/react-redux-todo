@@ -1,12 +1,16 @@
 import React from 'react'
 
 const TodoAddInput = ({ name, value, updateFormValue }) => {
+  const handleChange = ({ target: { name, value} }) => {
+    updateFormValue(name, value)
+  }
+
   switch (name) {
     case 'importance':
       return (
         <select 
           name={name}
-          onChange={(e) => updateFormValue(e.target.name, e.target.value)}
+          onChange={handleChange}
         >
           <option value="important">important</option>
           <option value="regular">regular</option>
@@ -20,7 +24,7 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
           placeholder={name}
           name={name}
           value={value}
-          onChange={(e) => updateFormValue(e.target.name, e.target.value)}
+          onChange={handleChange}
         />
     )
   }
