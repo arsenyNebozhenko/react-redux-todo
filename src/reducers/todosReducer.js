@@ -19,7 +19,6 @@ const todosReducer = (state = initialState, action) => {
         return state.map(item => item.importance === action.payload.value ? {...item, isHidden: false} : {...item, isHidden: true})
       }
     case DETECT_ITEMS_FAILURE:
-      console.log(isValidDate(state[0].dateExpires))
       return state.map(item => item.status === 'active' && isValidDate(item.dateExpires) && new Date(item.dateExpires).getTime() <= new Date(item.dateAdded).getTime() ? {...item, status: 'failed'} : item)
     case SET_ITEM_PROP:
       return state.map(item => item.id === action.payload.id ? {...item, [action.payload.key]: action.payload.value} : item)
