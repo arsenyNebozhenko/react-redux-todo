@@ -5,11 +5,14 @@ const initialState = {
 }
 
 const todoFilterFormReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type } = action
+  const { value } = action.payload ? action.payload : action
+
+  switch (type) {
     case UPDATE_FILTER_FORM_VALUE:
       return {
         ...state,
-        value: action.payload.value
+        value: value
       }
     default:
       return state

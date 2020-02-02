@@ -10,11 +10,14 @@ const initialState = {
 }
 
 const TodoAddFormReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type } = action
+  const { name, value } = action.payload ? action.payload : action
+
+  switch (type) {
     case UPDATE_FORM_VALUE:
       return {
         ...state,
-        [action.payload.name]: action.payload.value
+        [name]: value
       }
     case TOGGLE_EXTEND_FORM:
       return {
