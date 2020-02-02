@@ -24,14 +24,16 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
         className="todo-item__button todo-item__button--toggle" 
         onClick={handleToggleButtonClick}
       >&#10004;</button>
-      <input 
-        className="todo-item__title"
-        type="text" 
-        name="title" 
-        value={title} 
-        onChange={({ target: { name, value }}) => setItemProp(name, value)} 
-      />
-      {description && <div className="todo-item__description">{description}</div>}
+      <div className="todo-item__text">
+        <input 
+          className="todo-item__title"
+          type="text" 
+          name="title" 
+          value={title} 
+          onChange={({ target: { name, value }}) => setItemProp(name, value)} 
+        />
+        {description && <div className="todo-item__description">{description}</div>}
+      </div>
       <ul className="todo-item__dates">
         <li className="todo-item__date">Added: {getFormattedDate(dateAdded)}</li>
         {isValidDate(dateExpires) && <li className="todo-item__date">Expires: {getFormattedDate(dateExpires)}</li>}
