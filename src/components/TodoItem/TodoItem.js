@@ -30,7 +30,7 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
           type="text" 
           name="title" 
           value={title} 
-          onChange={({ target: { name, value }}) => setItemProp(name, value)} 
+          onChange={({ target: { name, value }}) => setItemProp(id, name, value)} 
         />
         {description && <div className="todo-item__description">{description}</div>}
       </div>
