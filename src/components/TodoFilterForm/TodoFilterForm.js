@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './TodoFilterForm.scss'
 
 import { 
   displayItemsByImportance 
@@ -15,9 +16,13 @@ const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance
   }
 
   return (
-    <form>
-      <strong>Show</strong>
-      <select value={value} onChange={handleChange}>
+    <form className="todo-filter-form">
+      <h4 className="todo-filter-form__title">Show</h4>
+      <select
+        className="todo-filter-form__select" 
+        value={value} 
+        onChange={handleChange}
+      >
         <option value="all">all</option>
         <option value="important">important</option>
         <option value="regular">regular</option>

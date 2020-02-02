@@ -1,0 +1,10 @@
+.todo-filter-form {
+  display: flex;
+  &__title {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  &__select {
+    font-size: 2rem;
+  }
+}
