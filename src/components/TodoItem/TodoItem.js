@@ -7,6 +7,8 @@ import {
 } from '../../utils'
 
 const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
+  const itemClass = 'todo-item' + (isHidden ? ' todo-item--hidden' : status === 'completed' ? ' todo-item--completed' : status === 'failed' ? ' todo-item--failed' : '')
+  
   const handleToggleButtonClick = () => {
     if (status === 'completed') {
       setItemProp(id, 'dateCompleted', null)
@@ -17,7 +19,7 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
   }
   
   return (
-    <li className={'todo-item' + (isHidden ? ' todo-item--hidden' : status === 'completed' ? ' todo-item--completed' : '')}>
+    <li className={itemClass}>
       <button
         className="todo-item__button todo-item__button--toggle" 
         onClick={handleToggleButtonClick}

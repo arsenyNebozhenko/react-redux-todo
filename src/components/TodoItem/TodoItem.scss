@@ -3,16 +3,21 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: .25rem;
+  padding: .25rem;
   &--hidden {
     display: none;
   }
-  &--completed {
-    color: green;
-  }
   &__title {
-    font-size: 1.25rem;
+    font-size: 2rem;
+    border: 0;
     flex-grow: 1;
     margin-right: .5rem;
+  }
+  &--completed &__title {
+    color: green;
+  }
+  &--failed &__title {
+    color: #eb503c;
   }
   &__description {
     margin-right: .5rem;
@@ -32,8 +37,10 @@
     margin-right: .5rem;
   }
   &__button {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    line-height: 0;
     border-radius: 50%;
     border: 2px solid transparent;
     cursor: pointer;
@@ -48,5 +55,13 @@
       border-color: #eb503c;
       background-color: #eb503c;
     }
+  }
+  &--completed &__button--toggle {
+    color: green;
+    border-color: green;
+  }
+  &--failed &__button--toggle {
+    color: #eb503c;
+    border-color: #eb503c;
   }
 }
