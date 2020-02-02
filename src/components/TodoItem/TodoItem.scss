@@ -3,21 +3,23 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: .25rem;
+  min-height: 4rem;
   &--hidden {
     display: none;
   }
   &__text {
-    padding: .5rem;
     flex-grow: 1;
     margin-right: .5rem;
+    display: flex;
+    flex-direction: column;
   }
   &__title {
     font-size: 2rem;
     border: 0;
-    margin-right: .5rem;
   }
   &__description {
-    font-size: 1.5rem;
+    border: 0;
+    font-size: 1.25rem;
   }
   &--completed &__title,
   &--completed &__description {
@@ -26,10 +28,6 @@
   &--failed &__title,
   &--failed &__description {
     color: #eb503c;
-  }
-  &__status {
-    font-size: .75rem;
-    margin-right: .5rem;
   }
   &__dates {
     margin-right: .5rem;

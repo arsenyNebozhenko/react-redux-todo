@@ -31,8 +31,16 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
           name="title" 
           value={title} 
           onChange={({ target: { name, value }}) => setItemProp(id, name, value)} 
-        />
-        {description && <div className="todo-item__description">{description}</div>}
+          />
+        {description && 
+          <input 
+            className="todo-item__description"
+            type="text" 
+            name="description" 
+            value={description} 
+            onChange={({ target: { name, value }}) => setItemProp(id, name, value)} 
+          />
+        }
       </div>
       <ul className="todo-item__dates">
         <li className="todo-item__date">Added: {getFormattedDate(dateAdded)}</li>
