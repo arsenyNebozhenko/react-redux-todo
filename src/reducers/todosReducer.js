@@ -1,7 +1,7 @@
 import { ADD_ITEM, DELETE_ITEM, DISPLAY_ITEMS_BY_IMPORTANCE, DETECT_ITEMS_FAILURE, SET_ITEM_PROP,  } from '../actions/types'
 import { isValidDate } from '../utils'
 
-const initialState = JSON.parse(localStorage.getItem('todos'))
+const initialState = JSON.parse(localStorage.getItem('todos')) || []
 
 const todosReducer = (state = initialState, action) => {
   const { type } = action
