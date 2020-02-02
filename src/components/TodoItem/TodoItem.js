@@ -6,7 +6,7 @@ import {
   isValidDate 
 } from '../../utils'
 
-const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
+const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
   const itemClass = 'todo-item' + (isHidden ? ' todo-item--hidden' : status === 'completed' ? ' todo-item--completed' : status === 'failed' ? ' todo-item--failed' : '')
   
   const handleToggleButtonClick = () => {
@@ -32,13 +32,11 @@ const TodoItem = ({ todo: { id, title, description, importance, dateAdded, dateE
         onChange={({ target: { name, value }}) => setItemProp(name, value)} 
       />
       {description && <div className="todo-item__description">{description}</div>}
-      <strong className="todo-item__status">{status}</strong>
       <ul className="todo-item__dates">
         <li className="todo-item__date">Added: {getFormattedDate(dateAdded)}</li>
         {isValidDate(dateExpires) && <li className="todo-item__date">Expires: {getFormattedDate(dateExpires)}</li>}
         {dateCompleted && <li className="todo-item__date">Completed: {getFormattedDate(dateCompleted)}</li>}
       </ul>
-      {importance && <div className="todo-item__importance">{importance}</div>}
       <button
         className="todo-item__button todo-item__button--delete" 
         onClick={() => deleteItem(id)
