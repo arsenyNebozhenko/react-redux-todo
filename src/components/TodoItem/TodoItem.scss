@@ -22,11 +22,13 @@
     font-size: 1.25rem;
   }
   &--completed &__title,
-  &--completed &__description {
+  &--completed &__description,
+  &--completed &__dates {
     color: green;
   }
   &--failed &__title,
-  &--failed &__description {
+  &--failed &__description,
+  &--failed &__dates {
     color: #eb503c;
   }
   &__dates {
