@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import './TodoFilterForm.scss'
 
@@ -10,6 +10,10 @@ import {
 } from '../../actions/todoFilterFormActions'
 
 const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance }) => {
+  useEffect(() => {
+    displayItemsByImportance(value)
+  }, [displayItemsByImportance, value])
+
   const handleChange = ({ target: { value}}) => {
     updateFilterFormValue(value)
     displayItemsByImportance(value)

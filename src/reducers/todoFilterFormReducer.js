@@ -1,7 +1,7 @@
 import { UPDATE_FILTER_FORM_VALUE } from "../actions/types"
 
 const initialState = {
-  value: ''
+  value: 'all'
 }
 
 const todoFilterFormReducer = (state = initialState, action) => {
