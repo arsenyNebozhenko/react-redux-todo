@@ -27,6 +27,7 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
       return (   
         <input 
           className={'todo-add-input' + (name === 'dateExpires' ? ' todo-add-input--time' : '')}
+          required={name === 'title'}
           type={name === 'dateExpires' ? 'datetime-local' : 'text'}
           placeholder={capitalize(name)}
           name={name}
