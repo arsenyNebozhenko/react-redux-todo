@@ -1,6 +1,8 @@
 import { MONTHS } from '../constants'
 
 export const getFormattedDate = (myDate) => {
+  myDate = new Date('' + myDate)
+
   const date = myDate.getDate()
   const month = MONTHS[myDate.getMonth()]
   const hours = myDate.getHours()
@@ -10,7 +12,7 @@ export const getFormattedDate = (myDate) => {
 }
 
 export const isValidDate = (myDate) => {
-  return '' + myDate !== 'Invalid Date'
+  return myDate && '' + myDate !== 'Invalid Date'
 }
 
 export const capitalize = (str) => str.split(' ').map(word => word.split('').map((char, index) => index === 0 ? char.toUpperCase() : char).join('')).join(' ')

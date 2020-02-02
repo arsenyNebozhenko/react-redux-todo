@@ -19,6 +19,10 @@ const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
     return () => clearInterval(interval)
   }, [detectItemsFailure])
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
   const items = todos.map((todo, index) => (
     <TodoItem 
       key={index} 
