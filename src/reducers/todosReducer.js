@@ -13,11 +13,7 @@ const todosReducer = (state = initialState, action) => {
     case DELETE_ITEM:
       return state.filter(item => item.id !== action.payload.id)
     case DISPLAY_ITEMS_BY_IMPORTANCE:
-      if (action.payload.value === 'all') {
-        return state.map(item => ({...item, isHidden: false}))
-      } else {
-        return state.map(item => item.importance === action.payload.value ? {...item, isHidden: false} : {...item, isHidden: true})
-      }
+      return action.payload.value === 'all' ? state.map(item => ({...item, isHidden: false})) : state.map(item => item.importance === action.payload.value ? {...item, isHidden: false} : {...item, isHidden: true})
     case DETECT_ITEMS_FAILURE:
       return state.map(item => item.status === 'active' && isValidDate(item.dateExpires) && new Date(item.dateExpires).getTime() <= new Date(item.dateAdded).getTime() ? {...item, status: 'failed'} : item)
     case SET_ITEM_PROP:
