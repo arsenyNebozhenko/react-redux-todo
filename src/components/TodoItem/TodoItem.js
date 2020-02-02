@@ -27,6 +27,7 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
       <div className="todo-item__text">
         <input 
           className="todo-item__title"
+          autocomplete="off"
           type="text" 
           name="title" 
           value={title} 
@@ -35,6 +36,7 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
         {description && 
           <input 
             className="todo-item__description"
+            autocomplete="off"
             type="text" 
             name="description" 
             value={description} 

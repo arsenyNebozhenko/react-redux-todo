@@ -42,7 +42,7 @@ const TodoAddForm = ({ title, description, importance, dateExpires, updateFormVa
   }
 
   return (
-    <form className="todo-add-form" onSubmit={handleSubmit}>
+    <form className="todo-add-form" autocomplete="off" onSubmit={handleSubmit}>
       <TodoAddToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
       <TodoAddInput name="title" value={title} updateFormValue={updateFormValue} />
       {isExtended && <TodoAddInput name="description" value={description} updateFormValue={updateFormValue} />}
