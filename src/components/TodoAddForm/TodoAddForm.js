@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import './TodoAddForm.scss'
+import styled from 'styled-components'
 
 import TodoAddToggleExtendButton from '../TodoAddToggleExtendButton/TodoAddToggleExtendButton'
 import TodoAddInput from '../TodoAddInput/TodoAddInput'
@@ -16,6 +16,24 @@ import {
 import { 
   updateFilterFormValue 
 } from '../../actions/todoFilterFormActions'
+
+const Container = styled.form`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+`
+
+const Button = styled.button`
+  font-size: 3rem;
+  line-height: 0;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  background-color: #5897FE;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+`
 
 
 const TodoAddForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, displayItemsByImportance, isExtended, toggleExtendForm, addItem }) => {
@@ -42,14 +60,14 @@ const TodoAddForm = ({ title, description, importance, dateExpires, updateFormVa
   }
 
   return (
-    <form className="todo-add-form" autoComplete="off" onSubmit={handleSubmit}>
+    <Container autoComplete="off" onSubmit={handleSubmit}>
       <TodoAddToggleExtendButton isExtended={isExtended} toggleExtendForm={toggleExtendForm} />
       <TodoAddInput name="title" value={title} updateFormValue={updateFormValue} />
       {isExtended && <TodoAddInput name="description" value={description} updateFormValue={updateFormValue} />}
       {isExtended && <TodoAddInput name="importance" updateFormValue={updateFormValue} />}
       {isExtended && <TodoAddInput name="dateExpires" value={dateExpires} updateFormValue={updateFormValue} />}
-      <button className="todo-add-form__button">+</button>
-    </form>
+      <Button>+</Button>
+    </Container>
   )
 }
 

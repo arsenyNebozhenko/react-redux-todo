@@ -1,10 +1,9 @@
 import React from 'react'
-import './Todo.scss'
+import styled from 'styled-components'
 
 import TodoAddForm from '../TodoAddForm/TodoAddForm'
 import TodoList from '../TodoList/TodoList'
 import TodoFilterForm from '../TodoFilterForm/TodoFilterForm'
-import styled from 'styled-components'
 
 const Container = styled.div`
   max-width: 1028px;
