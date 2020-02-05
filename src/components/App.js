@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Header/Header'
-import Todo from '../Todo/Todo'
 import styled from 'styled-components'
+import Header from './Header'
+import Todo from './Todo'
 
 const Container = styled.div`
   height: 100%;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { ReactComponent as Gear} from '../../assets/gear.svg'
+import { ReactComponent as Gear} from '../assets/gear.svg'
 
 const Button = styled.button`
   flex-shrink: 0;

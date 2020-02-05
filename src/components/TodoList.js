@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import TodoItem from '../TodoItem/TodoItem'
+import TodoItem from './TodoItem'
 
 import {
   deleteItem,
   detectItemsFailure,
   setItemProp
-} from '../../actions/todosActions'
+} from '../actions/todosActions'
 
 const Container = styled.ul`
   margin-bottom: .5rem;

@@ -2,20 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import TodoAddToggleExtendButton from '../TodoAddToggleExtendButton/TodoAddToggleExtendButton'
-import TodoAddInput from '../TodoAddInput/TodoAddInput'
+import TodoAddToggleExtendButton from './TodoAddToggleExtendButton'
+import TodoAddInput from './TodoAddInput'
 
 import { 
   updateFormValue, 
   toggleExtendForm 
-} from '../../actions/todoAddFormActions'
+} from '../actions/todoAddFormActions'
 import { 
   addItem, 
   displayItemsByImportance 
-} from '../../actions/todosActions'
+} from '../actions/todosActions'
 import { 
   updateFilterFormValue 
-} from '../../actions/todoFilterFormActions'
+} from '../actions/todoFilterFormActions'
 
 const Container = styled.form`
   display: flex;

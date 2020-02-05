@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 import { 
   displayItemsByImportance 
-} from '../../actions/todosActions'
+} from '../actions/todosActions'
 import { 
   updateFilterFormValue 
-} from '../../actions/todoFilterFormActions'
+} from '../actions/todoFilterFormActions'
 
 const Container = styled.form`
   display: flex;

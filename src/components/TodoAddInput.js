@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { 
   capitalize 
-} from '../../utils'
+} from '../utils'
 
 const Select = styled.select`
   font-size: 2rem;

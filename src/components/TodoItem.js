@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { 
   getFormattedDate, 
   isValidDate 
-} from '../../utils'
+} from '../utils'
 
 const Container = styled.li`
   display: ${props => props.isHidden ? 'none' : 'flex'};
