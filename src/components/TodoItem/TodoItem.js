@@ -49,12 +49,14 @@ const DeleteButton = styled.button`
 `
 
 const Title = styled.input`
+  background-color: transparent;
   font-size: 2rem;
   border: 0;
   color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
-  `
+`
 
 const Description = styled.input`
+  background-color: transparent;
   border: 0;
   font-size: 1.25rem;
   color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};

@@ -10,9 +10,7 @@ const Container = styled.div`
   width: 100%;
   margin: auto;
   padding: 1rem;
-  background-color: #fff;
   border-radius: 3px;
-  box-shadow: 0 0 16px .3rem #D1D5DA;
 `
 
 const Todo = () => {
