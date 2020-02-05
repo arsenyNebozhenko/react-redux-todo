@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import './TodoFilterForm.scss'
+import styled from 'styled-components'
 
 import { 
   displayItemsByImportance 
@@ -8,6 +8,19 @@ import {
 import { 
   updateFilterFormValue 
 } from '../../actions/todoFilterFormActions'
+
+const Container = styled.form`
+  display: flex;
+`
+
+const Title = styled.h4`
+  font-size: 2rem;
+  margin-right: 1rem;
+`
+
+const Select = styled.select`
+  font-size: 2rem;
+`
 
 const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance }) => {
   useEffect(() => {
@@ -20,10 +33,9 @@ const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance
   }
 
   return (
-    <form className="todo-filter-form">
-      <h4 className="todo-filter-form__title">Show</h4>
-      <select
-        className="todo-filter-form__select" 
+    <Container>
+      <Title>Show</Title>
+      <Select
         value={value} 
         onChange={handleChange}
       >
@@ -31,8 +43,8 @@ const TodoFilterForm = ({ value, updateFilterFormValue, displayItemsByImportance
         <option value="important">important</option>
         <option value="regular">regular</option>
         <option value="not important">not important</option>
-      </select>
-    </form>
+      </Select>
+    </Container>
   )
 }
 
