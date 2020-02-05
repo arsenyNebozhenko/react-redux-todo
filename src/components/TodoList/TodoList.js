@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import './TodoList.scss'
+import styled from 'styled-components'
 
 import TodoItem from '../TodoItem/TodoItem'
 
@@ -9,6 +9,10 @@ import {
   detectItemsFailure,
   setItemProp
 } from '../../actions/todosActions'
+
+const Container = styled.ul`
+  margin-bottom: .5rem;
+`
 
 const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
   useEffect(() => {
@@ -34,9 +38,9 @@ const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
   ))
 
   return (
-    <ul className="todo-list">
+    <Container className="todo-list">
       {items}
-    </ul>
+    </Container>
   )
 }
 
