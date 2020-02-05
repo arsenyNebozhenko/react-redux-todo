@@ -1,14 +1,80 @@
 import React from 'react'
-import './TodoItem.scss'
+import styled from 'styled-components'
 
 import { 
   getFormattedDate, 
   isValidDate 
 } from '../../utils'
 
+const Container = styled.li`
+  display: ${props => props.isHidden ? 'none' : 'flex'};
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .25rem;
+  min-height: 4rem;
+  color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
+`
+
+const Text = styled.div`
+  flex-grow: 1;
+  margin-right: .5rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const ToggleButton = styled.button`
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  line-height: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background-color: transparent;
+  color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
+  border-color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
+  margin-right: 0.5rem;
+  cursor: pointer;
+`
+
+const DeleteButton = styled.button`
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  line-height: 0;
+  border: 2px solid transparent;
+  color: #fff;
+  border-color: #eb503c;
+  background-color: #eb503c;
+  cursor: pointer;
+`
+
+const Title = styled.input`
+  font-size: 2rem;
+  border: 0;
+  color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
+  `
+
+const Description = styled.input`
+  border: 0;
+  font-size: 1.25rem;
+  color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
+`
+
+const DatesList = styled.ul`
+  margin-right: .5rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const DateItem = styled.li`
+  line-height: 1;
+  font-size: 1.1rem;
+  &:not(:last-child) {
+    margin-right: .25rem;
+  }
+`
+
 const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, dateCompleted, status, isHidden }, deleteItem,  setItemProp }) => {
-  const extraClassName = isHidden ? ' todo-item--hidden' : status === 'completed' ? ' todo-item--completed' : status === 'failed' ? ' todo-item--failed' : ''
-  
   const handleToggleButtonClick = () => {
     if (status === 'completed') {
       setItemProp(id, 'dateCompleted', null)
@@ -19,23 +85,20 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
   }
   
   return (
-    <li className={'todo-item' + extraClassName}>
-      <button
-        className="todo-item__button todo-item__button--toggle" 
-        onClick={handleToggleButtonClick}
-      >&#10004;</button>
-      <div className="todo-item__text">
-        <input 
-          className="todo-item__title"
+    <Container isHidden={isHidden} status={status}>
+      <ToggleButton onClick={handleToggleButtonClick} status={status}>&#10004;</ToggleButton>
+      <Text>
+        <Title 
+          status={status}
           autoComplete="off"
           type="text" 
           name="title" 
           value={title} 
           onChange={({ target: { name, value }}) => setItemProp(id, name, value)} 
-          />
+        />
         {description && 
-          <input 
-            className="todo-item__description"
+          <Description
+            status={status} 
             autoComplete="off"
             type="text" 
             name="description" 
@@ -43,17 +106,14 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
             onChange={({ target: { name, value }}) => setItemProp(id, name, value)} 
           />
         }
-      </div>
-      <ul className="todo-item__dates">
-        <li className="todo-item__date">Added: {getFormattedDate(dateAdded)}</li>
-        {isValidDate(dateExpires) && <li className="todo-item__date">Expires: {getFormattedDate(dateExpires)}</li>}
-        {dateCompleted && <li className="todo-item__date">Completed: {getFormattedDate(dateCompleted)}</li>}
-      </ul>
-      <button
-        className="todo-item__button todo-item__button--delete" 
-        onClick={() => deleteItem(id)
-      }>&times;</button>
-    </li>
+      </Text>
+      <DatesList>
+        <DateItem>Added: {getFormattedDate(dateAdded)}</DateItem>
+        {isValidDate(dateExpires) && <DateItem>Expires: {getFormattedDate(dateExpires)}</DateItem>}
+        {dateCompleted && <DateItem>Completed: {getFormattedDate(dateCompleted)}</DateItem>}
+      </DatesList>
+      <DeleteButton onClick={() => deleteItem(id)}>&times;</DeleteButton>
+    </Container>
   )
 }
 
