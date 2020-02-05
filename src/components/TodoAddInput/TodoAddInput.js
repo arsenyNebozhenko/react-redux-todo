@@ -1,9 +1,30 @@
 import React from 'react'
-import './TodoAddInput.scss'
+import styled from 'styled-components'
 
 import { 
   capitalize 
 } from '../../utils'
+
+const Select = styled.select`
+  font-size: 2rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  width: 100%;
+  max-width: 256px;
+  margin-right: .16rem;
+  width: 50%;
+  font-size: 1.25em;
+`
+
+const Input = styled.input`
+  font-size: 2rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  width: 100%;
+  max-width: 256px;
+  margin-right: .16rem;
+  font-size: 1.5rem;
+`
 
 const TodoAddInput = ({ name, value, updateFormValue }) => {
   const handleChange = ({ target: { name, value} }) => {
@@ -13,20 +34,18 @@ const TodoAddInput = ({ name, value, updateFormValue }) => {
   switch (name) {
     case 'importance':
       return (
-        <select 
-          className="todo-add-input todo-add-input--select"
+        <Select 
           name={name}
           onChange={handleChange}
         >
           <option value="important">important</option>
           <option value="regular">regular</option>
           <option value="not important">not important</option>
-        </select>
+        </Select>
       )
     default:
       return (   
-        <input 
-          className={'todo-add-input' + (name === 'dateExpires' ? ' todo-add-input--time' : '')}
+        <Input 
           required={name === 'title'}
           type={name === 'dateExpires' ? 'datetime-local' : 'text'}
           placeholder={capitalize(name)}
