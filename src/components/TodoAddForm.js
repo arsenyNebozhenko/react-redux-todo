@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import TodoAddToggleExtendButton from './TodoAddToggleExtendButton'
 import TodoAddInput from './TodoAddInput'
+import Button from './Button'
 
 import { 
   updateFormValue, 
@@ -22,19 +23,6 @@ const Container = styled.form`
   justify-content: space-between;
   margin-bottom: .5rem;
 `
-
-const Button = styled.button`
-  font-size: 3rem;
-  line-height: 0;
-  width: 4rem;
-  height: 4rem;
-  flex-shrink: 0;
-  background-color: #5897FE;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-`
-
 
 const TodoAddForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, displayItemsByImportance, isExtended, toggleExtendForm, addItem }) => {
   const handleSubmit = (e) => {

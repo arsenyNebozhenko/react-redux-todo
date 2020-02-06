@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Button from './Button'
+
 import { 
   getFormattedDate, 
   isValidDate 
@@ -20,32 +22,6 @@ const Text = styled.div`
   margin-right: .5rem;
   display: flex;
   flex-direction: column;
-`
-
-const ToggleButton = styled.button`
-  width: 3rem;
-  height: 3rem;
-  font-size: 2rem;
-  line-height: 0;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background-color: transparent;
-  color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
-  border-color: ${props => props.status === 'completed' ? 'green' : props.status === 'failed' ? '#eb503c' : 'black'};
-  margin-right: 0.5rem;
-  cursor: pointer;
-`
-
-const DeleteButton = styled.button`
-  width: 3rem;
-  height: 3rem;
-  font-size: 2rem;
-  line-height: 0;
-  border: 2px solid transparent;
-  color: #fff;
-  border-color: #eb503c;
-  background-color: #eb503c;
-  cursor: pointer;
 `
 
 const Title = styled.input`
@@ -88,7 +64,7 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
   
   return (
     <Container isHidden={isHidden} status={status}>
-      <ToggleButton onClick={handleToggleButtonClick} status={status}>&#10004;</ToggleButton>
+      <Button onClick={handleToggleButtonClick} status={status}>&#10004;</Button>
       <Text>
         <Title 
           status={status}
@@ -114,7 +90,7 @@ const TodoItem = ({ todo: { id, title, description, dateAdded, dateExpires, date
         {isValidDate(dateExpires) && <DateItem>Expires: {getFormattedDate(dateExpires)}</DateItem>}
         {dateCompleted && <DateItem>Completed: {getFormattedDate(dateCompleted)}</DateItem>}
       </DatesList>
-      <DeleteButton onClick={() => deleteItem(id)}>&times;</DeleteButton>
+      <Button onClick={() => deleteItem(id)}>&times;</Button>
     </Container>
   )
 }

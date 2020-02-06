@@ -14,3 +14,8 @@ export const getFormattedDate = (myDate) => {
 export const isValidDate = (myDate) => myDate && '' + myDate !== 'Invalid Date'
 
 export const capitalize = (str) => str.split(' ').map(word => word.split('').map((char, index) => index === 0 ? char.toUpperCase() : char).join('')).join(' ')
+
+export const colorMap = {
+  'completed': 'green',
+  'failed': '#eb503c',
+}
