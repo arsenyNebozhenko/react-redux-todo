@@ -6,17 +6,9 @@ import TodoAddToggleExtendButton from './TodoAddToggleExtendButton'
 import TodoAddInput from './TodoAddInput'
 import Button from './Button'
 
-import { 
-  updateFormValue, 
-  toggleExtendForm 
-} from '../actions/todoAddFormActions'
-import { 
-  addItem, 
-  displayItemsByImportance 
-} from '../actions/todosActions'
-import { 
-  updateFilterFormValue 
-} from '../actions/todoFilterFormActions'
+import { updateFormValue, toggleExtendForm } from '../actions/todoAddFormActions'
+import { addItem, displayItemsByImportance } from '../actions/todosActions'
+import { updateFilterFormValue } from '../actions/todoFilterFormActions'
 
 const Container = styled.form`
   display: flex;

@@ -2,32 +2,33 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import TodoItem from './TodoItem'
+import { deleteItem, detectItemsFailure, setItemProp } from '../actions/todosActions'
 
-import {
-  deleteItem,
-  detectItemsFailure,
-  setItemProp
-} from '../actions/todosActions'
+import TodoItem from './TodoItem'
 
 const Container = styled.ul`
   margin-bottom: .5rem;
 `
 
-const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
+const TodoList = ({ 
+    todos, 
+    deleteItem, 
+    detectItemsFailure, 
+    setItemProp 
+  }) => {
+
   useEffect(() => {
     detectItemsFailure()
-    const interval = setInterval(() => {
+    setInterval(() => {
       detectItemsFailure()
-    }, 1500)
-    return () => clearInterval(interval)
+    }, 300)
   }, [detectItemsFailure])
-
+  
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
-  const items = todos.map((todo, index) => (
+  const children = todos.map((todo, index) => (
     <TodoItem 
       key={index} 
       todo={todo}
@@ -37,11 +38,7 @@ const TodoList = ({ todos, deleteItem, detectItemsFailure, setItemProp }) => {
     />
   ))
 
-  return (
-    <Container className="todo-list">
-      {items}
-    </Container>
-  )
+  return <Container>{children}</Container>
 }
 
 const mapStateToProps = ({ todos }) => ({
