@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
@@ -33,7 +34,7 @@ const TodoAddForm = ({
     e.preventDefault()
 
     const item = {
-      id: Math.random(),
+      id: uuid.v4(),
       title,
       description,
       importance,
