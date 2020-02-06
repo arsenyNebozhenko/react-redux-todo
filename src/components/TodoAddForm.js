@@ -24,11 +24,23 @@ const Container = styled.form`
   margin-bottom: .5rem;
 `
 
-const TodoAddForm = ({ title, description, importance, dateExpires, updateFormValue, updateFilterFormValue, displayItemsByImportance, isExtended, toggleExtendForm, addItem }) => {
+const TodoAddForm = ({ 
+    title, 
+    description, 
+    importance, 
+    dateExpires, 
+    updateFormValue, 
+    updateFilterFormValue, 
+    displayItemsByImportance, 
+    isExtended, 
+    toggleExtendForm, 
+    addItem 
+  }) => {
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    addItem({
+    const item = {
       id: Math.random(),
       title,
       description,
@@ -37,7 +49,9 @@ const TodoAddForm = ({ title, description, importance, dateExpires, updateFormVa
       dateExpires: new Date(Date.parse(dateExpires)),
       status: 'active',
       isHidden: false
-    })
+    }
+
+    addItem(item)
 
     updateFormValue('title', '')
     updateFormValue('description', '')
